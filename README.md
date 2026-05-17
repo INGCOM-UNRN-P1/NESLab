@@ -1,37 +1,52 @@
-# 🎮 NESLab: 8ビットゲーム機で学ぶコンピュータの仕組み
+# 🎮 NESLab: aprender cómo funciona una computadora con una consola de juegos de 8 bits
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ip-arch/NESLab/blob/main/NESLab_Notebook.ipynb)
 
-**NESLab** は、ファミリーコンピュータ（NES）のハードウェアを舞台に、C言語でのプログラミングを通じて「コンピュータの真の仕組み」を体感するための教育用実験環境（ラボ）です。
+**NESLab** es un material educativo que usa el hardware de la Family Computer (NES) como escenario para experimentar, mediante programación en lenguaje C, cómo funciona realmente una computadora.
 
-現代のブラックボックス化したPCやスマートフォンとは異なり、8ビットゲーム機は**「CPU、メモリ、画面表示（PPU）」の相互作用がすべて丸見え**です。本環境では、複雑な環境構築を一切行うことなく、Google Colab（ブラウザ）上でC言語のコードをコンパイルし、Webエミュレータ上で自作のプログラムをピコピコと動かすことができます。
-
----
-
-## 🛠️ 学べること（カリキュラムの核）
-
-一般的な「画面に文字を出すだけ」のC言語入門とは異なり、ハードウェア（低レイヤ）に直結した本質的なコンピュータサイエンスを学びます。
-
-* **OSと高級言語の歴史**: なぜ機械語やアセンブラではなく「C言語」が必要だったのか
-* **プログラム内蔵方式**: CPUがメモリ（ROM/RAM）から命令を読み込んで実行するメカニズム
-* **ハードウェア制御**: メモリの「特定の住所（レジスタ）」を直接書き換えて画面や音を操る感覚
-* **アルゴリズムと状態遷移**: 1/60秒のループの中で、入力・衝突判定・描画を処理する構造
-* **コンパイルの本質**: 人間が書いたC言語（`.c`）が、アセンブラ（`.s`）を経て機械語（`.nes`）へ翻訳されるプロセス
+A diferencia de las PC y los teléfonos inteligentes modernos, que suelen ocultar sus mecanismos internos tras capas de abstracción, una consola de 8 bits permite ver con claridad la interacción entre el **CPU, la memoria y el sistema de video (PPU)**. Esa transparencia la convierte en una plataforma ideal para estudiar los fundamentos de la computación de forma práctica.
 
 ---
 
-## 🚀 はじめかた（受講生・読者向け）
+## 🛠️ Qué se puede aprender (núcleo del recorrido)
 
-環境構築は不要です。Google Colab上でノートブックを開き、セルを実行するだけで開始できます。
+A diferencia de una introducción típica a C centrada solo en mostrar texto por pantalla, este material apunta a una comprensión más esencial de la informática, conectada directamente con el hardware y los niveles bajos del sistema.
 
-### 1. ノートブックを開く
-ページ上部にある **[Open In Colab]** ボタンをクリックし、ご自身のGoogleドライブにコピーを保存して実行してください。
+* **Historia de los sistemas operativos y los lenguajes de alto nivel**: por qué fue necesario usar **C** en lugar de programar únicamente en lenguaje máquina o ensamblador.
+* **Arquitectura de programa almacenado**: cómo el CPU lee instrucciones desde la memoria (ROM/RAM) y las ejecuta.
+* **Control de hardware**: la experiencia de manipular pantalla y sonido escribiendo directamente en direcciones específicas de memoria (registros).
+* **Algoritmos y transiciones de estado**: la estructura de un ciclo de 1/60 de segundo que procesa entrada, detección de colisiones y dibujo.
+* **La esencia de la compilación**: el proceso por el cual el código escrito por una persona en C (`.c`) se traduce, pasando por ensamblador (`.s`), hasta convertirse en código máquina (`.nes`).
 
-### 2. 環境の自動構築（ノートブック内での処理）
-ノートブック内の「環境構築セル」を実行すると、裏側で本リポジトリがクローンされ、cc65（ファミコン用C言語コンパイラ）が自動セットアップされます。
+---
+
+## 🚀 Cómo empezar (para estudiantes y lectorado)
+
+No hace falta instalar el entorno manualmente. Se puede comenzar simplemente abriendo el notebook en Google Colab y ejecutando sus celdas.
+
+### 1. Abrir el notebook
+Hacé clic en el botón **[Open In Colab]** que aparece al inicio de la página, guardá una copia en tu Google Drive y ejecutalo desde allí.
+
+### 2. Construcción automática del entorno (dentro del notebook)
+Al ejecutar la celda de configuración del entorno dentro del notebook, este repositorio se clona automáticamente en segundo plano y se instala `cc65`, el compilador de C para Family Computer / NES.
 
 ```python
-# Colab上でのクローン・更新用コード
-!git clone [https://github.com/ip-arch/NESLab.git](https://github.com/ip-arch/NESLab.git) /content/NESLab
+# Código para clonar o actualizar el repositorio en Colab
+!git clone https://github.com/ip-arch/NESLab.git /content/NESLab
 %cd /content/NESLab
+```
 
+Una vez completada esa preparación, se pueden compilar y ejecutar los ejemplos directamente en Colab.
+
+---
+
+## 💡 En qué se diferencia de un curso tradicional de programación
+
+El objetivo de NESLab no es únicamente enseñar sintaxis de C. Su propósito es ayudar a entender, mediante experiencia directa, temas como:
+
+- cómo una computadora ejecuta instrucciones;
+- cómo interactúan memoria, CPU y periféricos;
+- cómo se representa una imagen en pantalla;
+- cómo se construye un programa que responde a entradas en tiempo real.
+
+En otras palabras, busca que quien aprende no se limite a “usar una computadora”, sino que también pueda comprender cómo está hecha por dentro.

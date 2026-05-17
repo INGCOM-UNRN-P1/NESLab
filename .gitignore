@@ -1,7 +1,7 @@
-# Ignore all NES binaries in this directory
+# Ignorar todos los binarios de NES en este directorio
 *.nes
 
-# Ignore compiler object files and executables
+# Ignorar archivos objeto y ejecutables del compilador
 *.o
 *.out
 *.exe

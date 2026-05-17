@@ -12,8 +12,8 @@ unsigned char player_a[]={0x00,0x40,0x80,0x80};
 unsigned char player_color=0x36;
 
 
-unsigned char shot_g=0x02;//'上矢印'
-unsigned char shot_a=0x01;//反転なし
+unsigned char shot_g=0x02;//'flecha hacia arriba'
+unsigned char shot_a=0x01;//sin inversión
 unsigned char shot_color=0x39;
 
 unsigned char enemy_g[]={0x80,0x80,0x80,0x80};
@@ -40,8 +40,8 @@ int main(){
 
 	init();
 
-	player_x=40;  //自機の横座標
-	player_y=200; //自機の縦座標
+	player_x=40;  //coordenada horizontal del jugador
+	player_y=200; //coordenada vertical del jugador
 
 
 	enqueueBG(20,2,'E');
@@ -61,50 +61,50 @@ int main(){
 		ppu_on();
 
 		if(judge_hit()){
-		//---------------敵に弾があたった時----------------//
+		//---------------cuando una bala golpea al enemigo----------------//
 			sound3(1,4,15);
 
 		}
 
-		//---------------画面の敵が全ていなくなった時----------------//
+		//---------------cuando ya no quedan enemigos en pantalla----------------//
 		if(count==0){
 			sound2(5,1,0x34);
-			break; //ゲームを終わる
+			break; //terminar el juego
 		}
 
 
 		fetch_keys();
 
-		//---------------上ボタンが押された時----------------//
+		//---------------cuando se presiona el botón arriba----------------//
 		if(keys[BT_UP]==1){
 			//player_y-=1;
 		}
 		
-		//---------------下ボタンが押された時----------------//
+		//---------------cuando se presiona el botón abajo----------------//
 		if(keys[BT_DOWN]==1){
 			//player_y+=1;
 		}
 		
-		//---------------左ボタンが押された時----------------//
+		//---------------cuando se presiona el botón izquierdo----------------//
 		if(keys[BT_LEFT]==1){
 			player_x-=1;
 		}
 		
-		//---------------右ボタンが押された時----------------//
+		//---------------cuando se presiona el botón derecho----------------//
 		if(keys[BT_RIGHT]==1){
 			player_x+=1;
 		}
 		
-		//----------------Aボタンが押された時----------------//
+		//----------------cuando se presiona el botón A----------------//
 		if(keys[BT_A]==1){
 
-			//----------------弾を発射する----------------//
+			//----------------disparar la bala----------------//
 			if(shot()){
 				sound1(1,2,0x7e);
 			}
 		}
 
-		//----------------STARTボタンが押された時----------------//
+		//----------------cuando se presiona el botón START----------------//
 		if(keys[BT_START]==1){
 
 		}
@@ -116,12 +116,12 @@ int main(){
 	
 
 	
-	//----------------画面を元に戻す---------------//
+	//----------------restaurar la pantalla----------------//
 	ppu_off();
 	clear_BG();
 	clear_SP();
 
-	//----------------メッセージを表示---------------//
+	//----------------mostrar el mensaje----------------//
 	enqueueBG(15,15,'E');
 	enqueueBG(16,15,'N');
 	enqueueBG(17,15,'D');
@@ -137,9 +137,9 @@ int main(){
 		waitvblank();
 		fetch_keys();
 
-		//----------------STARTボタンが押された時----------------//
+		//----------------cuando se presiona el botón START----------------//
 		if(keys[BT_START]==1){
-			return 0; //始めに戻る
+			return 0; //volver al inicio
 		}
 	}
 	
